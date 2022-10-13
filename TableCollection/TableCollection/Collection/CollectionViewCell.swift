@@ -29,7 +29,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     func initView() {
         self.contentView.addSubview(lb)
-        
+        self.contentView.backgroundColor = .red
     }
     
     func initConstraint(){

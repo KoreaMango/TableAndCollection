@@ -10,6 +10,8 @@ import SnapKit
 
 
 private let cellID = "cell"
+private let footerID = "foot"
+private let headerID = "head"
 
 class ViewController: UIViewController {
     
@@ -38,6 +40,8 @@ class ViewController: UIViewController {
     func setViews() {
         view.addSubview(collectionView)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: cellID )
+        collectionView.register(CollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerID)
+        collectionView.register(CollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerID)
     }
     
     func setConstraints(){
@@ -51,6 +55,11 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDataSource{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
     }
@@ -60,6 +69,7 @@ extension ViewController: UICollectionViewDataSource{
         cell.lb.text = String(indexPath.row)
         return cell
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegate {
@@ -69,6 +79,26 @@ extension ViewController: UICollectionViewDelegate {
         
         navigationController?.pushViewController(nextVC, animated: true)
         //self.present(nextVC, animated: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerID, for: indexPath)
+            footerView.backgroundColor = .gray
+            return footerView
+        } else {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath)
+            headerView.backgroundColor = .gray
+            return headerView
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 50 )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 50 )
     }
 }
 
