@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+import SnapKit
 
 private let cellID = "cellID"
 class TableViewController: UITableViewController {
@@ -23,8 +25,47 @@ class TableViewController: UITableViewController {
         
         self.navigationItem.title = String(indexPath)
         tableView.register(TableViewCell.self, forCellReuseIdentifier: cellID)
+        
+        setRefreshView()
+        
+    }
+    
+    // MARK: - Refresh TableView
+    func setRefreshView() {
+        let lottieView : LottieAnimationView = {
+            let view = LottieAnimationView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.animation = LottieAnimation.named("65622-ripple-alert")
+            view.loopMode = .loop
+            view.contentMode = .scaleAspectFit
+            view.play()
+            return view
+        }()
+        
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.translatesAutoresizingMaskIntoConstraints = false
+        tableView.refreshControl?.subviews.first?.removeFromSuperview()
+        
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshTable(refresh: )), for: .valueChanged)
+        tableView.refreshControl?.addSubview(lottieView)
+        
+        lottieView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(tableView.snp.top)
+            make.center.equalTo(view.safeAreaLayoutGuide.snp.center)
+        }
+        
+    }
+    
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        print("REFRESH")
+        self.tableView.reloadData()
+        refresh.endRefreshing()
     }
 
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

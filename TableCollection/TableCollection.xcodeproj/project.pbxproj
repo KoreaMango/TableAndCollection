@@ -19,6 +19,8 @@
 		04210E6B28F68C660043C8E8 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04210E6A28F68C660043C8E8 /* TableViewCell.swift */; };
 		04210E7028F695500043C8E8 /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04210E6F28F695500043C8E8 /* ExampleData.swift */; };
 		043C74C128F83D860029CE49 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C74C028F83D860029CE49 /* CollectionReusableView.swift */; };
+		04958A2528FECAD6000A3937 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04958A2428FECAD6000A3937 /* Lottie */; };
+		04E4C50E2903B78E00AEBB35 /* 65622-ripple-alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E4C50D2903B78E00AEBB35 /* 65622-ripple-alert.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,7 @@
 		04210E6A28F68C660043C8E8 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		04210E6F28F695500043C8E8 /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		043C74C028F83D860029CE49 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
+		04E4C50D2903B78E00AEBB35 /* 65622-ripple-alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "65622-ripple-alert.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04210E6528F664B20043C8E8 /* SnapKit in Frameworks */,
+				04958A2528FECAD6000A3937 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +72,7 @@
 		04210E4C28F5BA560043C8E8 /* TableCollection */ = {
 			isa = PBXGroup;
 			children = (
+				04E4C50F2903B79400AEBB35 /* LottieAnimation */,
 				04210E6E28F695390043C8E8 /* Data */,
 				04210E6D28F68ECD0043C8E8 /* Collection */,
 				04210E6C28F68EC80043C8E8 /* Table */,
@@ -108,6 +113,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		04E4C50F2903B79400AEBB35 /* LottieAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				04E4C50D2903B78E00AEBB35 /* 65622-ripple-alert.json */,
+			);
+			path = LottieAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,6 +139,7 @@
 			name = TableCollection;
 			packageProductDependencies = (
 				04210E6428F664B20043C8E8 /* SnapKit */,
+				04958A2428FECAD6000A3937 /* Lottie */,
 			);
 			productName = TableCollection;
 			productReference = 04210E4A28F5BA560043C8E8 /* TableCollection.app */;
@@ -157,6 +171,7 @@
 			mainGroup = 04210E4128F5BA560043C8E8;
 			packageReferences = (
 				04210E6328F664B20043C8E8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				04958A2328FECAD6000A3937 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 04210E4B28F5BA560043C8E8 /* Products */;
 			projectDirPath = "";
@@ -174,6 +189,7 @@
 			files = (
 				04210E5A28F5BA570043C8E8 /* LaunchScreen.storyboard in Resources */,
 				04210E5728F5BA570043C8E8 /* Assets.xcassets in Resources */,
+				04E4C50E2903B78E00AEBB35 /* 65622-ripple-alert.json in Resources */,
 				04210E5528F5BA560043C8E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +436,14 @@
 				kind = branch;
 			};
 		};
+		04958A2328FECAD6000A3937 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -427,6 +451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04210E6328F664B20043C8E8 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		04958A2428FECAD6000A3937 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04958A2328FECAD6000A3937 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
