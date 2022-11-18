@@ -82,15 +82,29 @@ extension ViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let reuseView = CollectionReusableView()
+        let resultView : UICollectionReusableView
+        let label : UILabel
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerID, for: indexPath)
             footerView.backgroundColor = .gray
-            return footerView
+            label = reuseView.footerView
+            footerView.addSubview(label)
+            
+            resultView = footerView
         } else {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath)
             headerView.backgroundColor = .gray
-            return headerView
+            label = reuseView.headerView
+            headerView.addSubview(label)
+            resultView = headerView
         }
+        label.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        return resultView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
